@@ -7,6 +7,10 @@
 <title>VERONIX.CLOTHING Login</title>
 
 <link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
 </head>
 
 <body>
@@ -17,17 +21,17 @@
 
 <h2>Owner Login</h2>
 
-<input 
-type="email" 
-id="email" 
+<input
+type="email"
+id="email"
 placeholder="Enter Email">
 
-<input 
-type="password" 
-id="password" 
+<input
+type="password"
+id="password"
 placeholder="Enter Password">
 
-<button onclick="testLogin()">
+<button onclick="login()">
 Login
 </button>
 
@@ -35,42 +39,32 @@ Login
 
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-
 <script>
 
-async function login(){
+async function login() {
 
 const email = document.getElementById("email").value;
 const password = document.getElementById("password").value;
 
-const {data,error} = await supabaseClient.auth.signInWithPassword({
+const { data, error } =
+await supabaseClient.auth.signInWithPassword({
 email: email,
 password: password
 });
+  if (error) {
 
+document.getElementById("message").innerText = error.message;
 
-if(error){
+} else {
 
-document.getElementById("message").innerText =
-"Login Failed";
+document.getElementById("message").innerText = "Login Successful";
 
-}else{
-
-document.getElementById("message").innerText =
-error.message;
-
-window.location.href="dashboard.html";
+window.location.href = "dashboard.html";
 
 }
 
 }
 
 </script>
-function testLogin(){
-alert("Button working");
-}
 </body>
 </html>
