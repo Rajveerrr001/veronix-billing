@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VERONIX.CLOTHING Dashboard</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+VERONIX.CLOTHING Dashboard
+</header>
+
+
+<div class="container">
+
+<h2>Welcome Owner 👋</h2>
+
+
+<button onclick="location.href='products.html'">
+📦 Manage Products
+</button>
+
+<br><br>
+
+<button onclick="location.href='billing.html'">
+🧾 Create New Bill
+</button>
+
+<br><br>
+
+<button onclick="location.href='customers.html'">
+👥 Customers
+</button>
+
+<br><br>
+
+<button onclick="location.href='stock.html'">
+📊 Stock Management
+</button>
+
+<br><br>
+
+<button onclick="logout()">
+🚪 Logout
+</button>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+
+<script>
+
+async function logout(){
+
+await supabaseClient.auth.signOut();
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+
+</body>
+</html>
