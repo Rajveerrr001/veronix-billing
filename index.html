@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERONIX.CLOTHING Billing</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VERONIX.CLOTHING Billing System</title>
+
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h1>VERONIX.CLOTHING</h1>
-<p>Billing System is under development...</p>
+<header>
+VERONIX.CLOTHING
+</header>
+
+<div class="container">
+
+<h2>Billing System</h2>
+
+<input type="text" placeholder="Customer Name">
+
+<input type="text" placeholder="Product Name">
+
+<input type="number" id="qty" placeholder="Quantity">
+
+<input type="number" id="price" placeholder="Price">
+
+<button onclick="calculateBill()">
+Calculate Bill
+</button>
+
+<table>
+
+<tr>
+<th>Subtotal</th>
+<td id="subtotal">₹0.00</td>
+</tr>
+
+<tr>
+<th>GST (5%)</th>
+<td id="gst">₹0.00</td>
+</tr>
+
+<tr>
+<th>Total</th>
+<td id="total">₹0.00</td>
+</tr>
+
+</table>
+
+<br>
+
+<button onclick="printBill()">
+Print Bill
+</button>
+
+</div>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
