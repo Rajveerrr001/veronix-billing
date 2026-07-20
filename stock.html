@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VERONIX Stock</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+<header>
+VERONIX.CLOTHING - Stock
+</header>
+
+
+<div class="container">
+
+<h2>Current Stock</h2>
+
+<table>
+
+<thead>
+<tr>
+<th>Product</th>
+<th>Category</th>
+<th>Size</th>
+<th>Color</th>
+<th>Stock</th>
+<th>Price</th>
+</tr>
+</thead>
+
+
+<tbody id="stockData">
+
+</tbody>
+
+</table>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+
+
+<script>
+
+async function loadStock(){
+
+const {data,error}= await supabaseClient
+.from("products")
+.select("*");
+
+
+if(data){
+
+let html="";
+
+
+data.forEach(product=>{
+
+html += `
+
+<tr>
+
+<td>${product.product_name}</td>
+
+<td>${product.category}</td>
+
+<td>${product.size || "-"}</td>
+
+<td>${product.color || "-"}</td>
+
+<td>${product.stock_qty}</td>
+
+<td>₹${product.selling_price}</td>
+
+</tr>
+
+`;
+
+});
+
+
+document.getElementById("stockData").innerHTML = html;
+
+}
+
+}
+
+
+loadStock();
+
+
+</script>
+
+
+</body>
+
+</html>
