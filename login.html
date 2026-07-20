@@ -1,1 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>VERONIX.CLOTHING Login</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>VERONIX.CLOTHING</h1>
+
+<h2>Owner Login</h2>
+
+<input 
+type="email" 
+id="email" 
+placeholder="Enter Email">
+
+<input 
+type="password" 
+id="password" 
+placeholder="Enter Password">
+
+<button onclick="login()">
+Login
+</button>
+
+<p id="message"></p>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+<script>
+
+async function login(){
+
+const email = document.getElementById("email").value;
+const password = document.getElementById("password").value;
+
+const {data,error} = await supabaseClient.auth.signInWithPassword({
+email: email,
+password: password
+});
+
+
+if(error){
+
+document.getElementById("message").innerText =
+"Login Failed";
+
+}else{
+
+document.getElementById("message").innerText =
+"Login Successful";
+
+window.location.href="dashboard.html";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
