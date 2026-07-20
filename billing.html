@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VERONIX Billing</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+VERONIX.CLOTHING - Billing
+</header>
+
+
+<div class="container">
+
+<h2>Create New Bill</h2>
+
+
+<input id="customer_name" placeholder="Customer Name">
+
+<input id="customer_mobile" placeholder="Mobile Number">
+
+
+<h3>Add Product</h3>
+
+
+<select id="product">
+
+<option>Select Product</option>
+
+</select>
+
+
+<input 
+type="number" 
+id="quantity" 
+placeholder="Quantity">
+
+
+<button onclick="addItem()">
+Add Item
+</button>
+
+
+<table>
+
+<thead>
+
+<tr>
+<th>Product</th>
+<th>Qty</th>
+<th>Amount</th>
+</tr>
+
+</thead>
+
+
+<tbody id="billItems">
+
+</tbody>
+
+</table>
+
+
+<h2>
+Total: ₹<span id="total">0</span>
+</h2>
+
+
+<button onclick="saveBill()">
+Save Bill
+</button>
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+
+
+<script>
+
+let total = 0;
+
+
+async function loadProducts(){
+
+const {data}=await supabaseClient
+.from("products")
+.select("*");
+
+
+let option="";
+
+data.forEach(p=>{
+
+option += `<option value="${p.id}" data-price="${p.selling_price}">
+${p.product_name}
+</option>`;
+
+});
+
+
+document.getElementById("product").innerHTML=option;
+
+}
+
+
+function addItem(){
+
+let select=document.getElementById("product");
+
+let name=select.options[select.selectedIndex].text;
+
+let price=select.options[select.selectedIndex]
+.getAttribute("data-price");
+
+
+let qty=document.getElementById("quantity").value;
+
+
+let amount=price*qty;
+
+
+total += amount;
+
+
+document.getElementById("billItems").innerHTML +=
+`
+<tr>
+<td>${name}</td>
+<td>${qty}</td>
+<td>₹${amount}</td>
+</tr>
+`;
+
+
+document.getElementById("total").innerText=total;
+
+}
+
+
+
+loadProducts();
+
+
+</script>
+
+
+</body>
+
+</html>
