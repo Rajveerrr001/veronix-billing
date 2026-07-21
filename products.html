@@ -9,6 +9,9 @@
 
 <link rel="stylesheet" href="css/style.css">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
 </head>
 
 <body>
@@ -16,7 +19,6 @@
 <header>
 VERONIX.CLOTHING - Products
 </header>
-
 
 <div class="container">
 
@@ -32,18 +34,80 @@ VERONIX.CLOTHING - Products
 <option>Belt</option>
 </select>
 
-
 <input id="brand" placeholder="Brand">
-
 <input id="size" placeholder="Size">
-
 <input id="color" placeholder="Color">
 
 <input id="purchase_price" type="number" placeholder="Purchase Price">
-
 <input id="selling_price" type="number" placeholder="Selling Price">
-
 <input id="stock_qty" type="number" placeholder="Stock Quantity">
 
+<button onclick="addProduct()">
+Add Product
+</button>
 
-<button onclick="add
+<p id="message"></p>
+
+<script>
+
+async function addProduct() {
+  const product_name = document.getElementById("product_name").value;
+const category = document.getElementById("category").value;
+const brand = document.getElementById("brand").value;
+const size = document.getElementById("size").value;
+const color = document.getElementById("color").value;
+const purchase_price = Number(document.getElementById("purchase_price").value);
+const selling_price = Number(document.getElementById("selling_price").value);
+const stock_qty = Number(document.getElementById("stock_qty").value);
+
+const { error } = await supabaseClient
+.from("products")
+.insert([
+{
+product_name,
+category,
+brand,
+size,
+color,
+purchase_price,
+selling_price,
+stock_qty
+}
+]);
+
+if (error) {
+document.getElementById("message").innerText = error.message;
+} else {
+document.getElementById("message").innerText = "Product Saved Successfully";
+}
+}
+  const product_name = document.getElementById("product_name").value;
+const category = document.getElementById("category").value;
+const brand = document.getElementById("brand").value;
+const size = document.getElementById("size").value;
+const color = document.getElementById("color").value;
+const purchase_price = Number(document.getElementById("purchase_price").value);
+const selling_price = Number(document.getElementById("selling_price").value);
+const stock_qty = Number(document.getElementById("stock_qty").value);
+
+const { error } = await supabaseClient
+.from("products")
+.insert([
+{
+product_name,
+category,
+brand,
+size,
+color,
+purchase_price,
+selling_price,
+stock_qty
+}
+]);
+
+if (error) {
+document.getElementById("message").innerText = error.message;
+} else {
+document.getElementById("message").innerText = "Product Saved Successfully";
+}
+  }
