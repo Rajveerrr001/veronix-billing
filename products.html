@@ -1,119 +1,84 @@
-alert("Function Started");
-alert("Insert Done");
-
-if (error) {
-  alert(error.message);
-}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VERONIX Products</title>
 
-<title>VERONIX Products</title>
+  <link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet" href="css/style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
 </head>
 
 <body>
 
 <header>
-VERONIX.CLOTHING - Products
+  VERONIX.CLOTHING - Products
 </header>
 
 <div class="container">
 
-<h2>Add New Product</h2>
+  <h2>Add New Product</h2>
 
-<input id="product_name" placeholder="Product Name">
+  <input id="product_name" placeholder="Product Name">
 
-<select id="category">
-<option>Clothing</option>
-<option>Shoes</option>
-<option>Perfume</option>
-<option>Cap</option>
-<option>Belt</option>
-</select>
+  <select id="category">
+    <option>Clothing</option>
+    <option>Shoes</option>
+    <option>Perfume</option>
+    <option>Cap</option>
+    <option>Belt</option>
+  </select>
 
-<input id="brand" placeholder="Brand">
-<input id="size" placeholder="Size">
-<input id="color" placeholder="Color">
+  <input id="brand" placeholder="Brand">
+  <input id="size" placeholder="Size">
+  <input id="color" placeholder="Color">
 
-<input id="purchase_price" type="number" placeholder="Purchase Price">
-<input id="selling_price" type="number" placeholder="Selling Price">
-<input id="stock_qty" type="number" placeholder="Stock Quantity">
+  <input id="purchase_price" type="number" placeholder="Purchase Price">
+  <input id="selling_price" type="number" placeholder="Selling Price">
+  <input id="stock_qty" type="number" placeholder="Stock Quantity">
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<button onclick="alert('Button Working'); addProduct();">
-Add Product
-</button>
+  <title>VERONIX Products</title>
 
-<p id="message"></p>
+  <link rel="stylesheet" href="css/style.css">
 
-<script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase.js"></script>
+</head>
 
-async function addProduct() {
-  const product_name = document.getElementById("product_name").value;
-const category = document.getElementById("category").value;
-const brand = document.getElementById("brand").value;
-const size = document.getElementById("size").value;
-const color = document.getElementById("color").value;
-const purchase_price = Number(document.getElementById("purchase_price").value);
-const selling_price = Number(document.getElementById("selling_price").value);
-const stock_qty = Number(document.getElementById("stock_qty").value);
+<body>
 
-const { error } = await supabaseClient
-.from("products")
-.insert([
-{
-product_name,
-category,
-brand,
-size,
-color,
-purchase_price,
-selling_price,
-stock_qty
-}
-]);
+<header>
+  VERONIX.CLOTHING - Products
+</header>
 
-if (error) {
-document.getElementById("message").innerText = error.message;
-} else {
-document.getElementById("message").innerText = "Product Saved Successfully";
-}
-}
-  const product_name = document.getElementById("product_name").value;
-const category = document.getElementById("category").value;
-const brand = document.getElementById("brand").value;
-const size = document.getElementById("size").value;
-const color = document.getElementById("color").value;
-const purchase_price = Number(document.getElementById("purchase_price").value);
-const selling_price = Number(document.getElementById("selling_price").value);
-const stock_qty = Number(document.getElementById("stock_qty").value);
+<div class="container">
 
-const { error } = await supabaseClient
-.from("products")
-.insert([
-{
-product_name,
-category,
-brand,
-size,
-color,
-purchase_price,
-selling_price,
-stock_qty
-}
-]);
+  <h2>Add New Product</h2>
 
-if (error) {
-document.getElementById("message").innerText = error.message;
-} else {
-document.getElementById("message").innerText = "Product Saved Successfully";
-}
-  }
+  <input id="product_name" placeholder="Product Name">
+
+  <select id="category">
+    <option>Clothing</option>
+    <option>Shoes</option>
+    <option>Perfume</option>
+    <option>Cap</option>
+    <option>Belt</option>
+  </select>
+
+  <input id="brand" placeholder="Brand">
+  <input id="size" placeholder="Size">
+  <input id="color" placeholder="Color">
+
+  <input id="purchase_price" type="number" placeholder="Purchase Price">
+  <input id="selling_price" type="number" placeholder="Selling Price">
+  <input id="stock_qty" type="number" placeholder="Stock Quantity">
+  </body>
+</html>
